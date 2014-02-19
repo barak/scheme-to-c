@@ -3532,7 +3532,7 @@
                                    (if (use-boehm?) "-lgc" "")))
                                (when (file-exists? "t.out")
                                  (delete-file "t.out"))
-                               (system "t > t.out")
+                               (system "./t > t.out")
                                (call-with-input-file "t.out" read))
                            (with-syntax ([pass (car pass*)]
                                          [unparser (car unparser*)])

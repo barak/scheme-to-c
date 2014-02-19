@@ -14,7 +14,11 @@ Required Libraries
 ===================
 There are two required git repositories to run this compiler.  This repository
 (of course), and the nanopass framework repository at
-github.com/akeep/nanopass-framework.
+git://github.com/akeep/nanopass-framework.git, which is registered as
+a submodule.
+```
+$ git submodule update --init nanopass-framework
+```
 
 You will also need one of the supported host compilers listed in the next
 section.
@@ -39,7 +43,7 @@ In the `scheme-to-c` directory start `petite` using the `--libdirs` command
 line switch to tell `petite` where to find the `nanopass-framework` directory:
 
 ```
-$ petite --libdirs .:<path to nanopass-framework>
+$ petite --libdirs .:nanopass-framework
 Petite Chez Scheme Version 8.4
 Copyright (c) 1985-2011 Cadence Research Systems
 
@@ -51,7 +55,7 @@ Copyright (c) 1985-2011 Cadence Research Systems
 You can run the tests as:
 
 ```
-$ petite --libdirs .:<path to nanopass-framework>
+$ petite --libdirs .:nanopass-framework
 Petite Chez Scheme Version 8.4
 Copyright (c) 1985-2011 Cadence Research Systems
 
@@ -89,7 +93,7 @@ $ ikarus
 Ikarus Scheme version 0.0.4-rc1+, 64-bit (revision 1870, build 2013-10-16)
 Copyright (c) 2006-2009 Abdulaziz Ghuloum
 
-> (library-path (cons "../nanopass-framework" (library-path)))
+> (library-path (cons "nanopass-framework" (library-path)))
 > (import (c))
 > (my-tiny-compiler '(+ 4 5))
 9
@@ -102,7 +106,7 @@ $ ikarus
 Ikarus Scheme version 0.0.4-rc1+, 64-bit (revision 1870, build 2013-10-16)
 Copyright (c) 2006-2009 Abdulaziz Ghuloum
 
-> (library-path (cons "../nanopass-framework" (library-path)))
+> (library-path (cons "nanopass-framework" (library-path)))
 > (import (tests))
 > (run-tests)
 running test 0:
@@ -135,7 +139,7 @@ line flag, one to search in the `nanopass-framework` directory and one in the
 current directory, `.`, which is otherwise not included.
 
 ```
-$ vicare --more-file-extensions --search-path ../nanopass-framework --search-path .
+$ vicare --more-file-extensions --search-path nanopass-framework --search-path .
 Vicare Scheme version 0.3d1, 64-bit
 Revision no-branch/no-commit
 Build 2013-10-15
@@ -151,7 +155,7 @@ vicare> (my-tiny-compile '(+ 4 5))
 We can also run the tests under Vicare as:
 
 ```
-$ vicare --more-file-extensions --search-path ../nanopass-framework --search-path .
+$ vicare --more-file-extensions --search-path nanopass-framework --search-path .
 Vicare Scheme version 0.3d1, 64-bit
 Revision no-branch/no-commit
 Build 2013-10-15

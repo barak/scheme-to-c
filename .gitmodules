@@ -1,0 +1,3 @@
+[submodule "nanopass-framework"]
+	path = nanopass-framework
+	url = git://github.com/akeep/nanopass-framework.git
